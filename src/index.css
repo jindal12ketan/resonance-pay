@@ -1,0 +1,9 @@
+@import "tailwindcss";
+/* @import "tailwindcss/preflight"; */
+
+:root {
+  --illustration-shadow: 227deg 63% 31%;
+  --illustration-midtone: 227deg 71% 51%;
+  --illustration-highlight: 227deg 71% 95%;
+  --illustration-accent: 227deg 71% 66%;
+}
