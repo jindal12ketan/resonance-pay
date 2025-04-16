@@ -4,9 +4,12 @@ import { PaymentTab, DebitCardDetails } from "../types/payment";
 import DebitCardForm from "./PaymentModes/DebitCardForm";
 import NetbankingForm from "./PaymentModes/NetBankingForm";
 import WalletsForm from "./PaymentModes/WalletForm";
+import PaymentSuccessModal from "./PaymentSuccessful";
 
 const PaymentOptions: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState<PaymentTab>("debitCard");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
   const [debitCardDetails, setCardDetails] = useState<DebitCardDetails>({
     cardNumber: "",
     expiry: "",
@@ -18,9 +21,10 @@ const PaymentOptions: React.FC = () => {
   };
 
   const handlePay = () => {
-    alert(
-      "Processing payment with: " + JSON.stringify(debitCardDetails, null, 2)
-    );
+    // alert(
+    //   "Processing payment with: " + JSON.stringify(debitCardDetails, null, 2)
+    // );
+    setShowSuccessModal(true);
   };
   const renderForm = () => {
     switch (selectedTab) {
@@ -54,6 +58,10 @@ const PaymentOptions: React.FC = () => {
       <div className="bg-orange-100 text-orange-600 text-center py-2 text-xs rounded-b-lg">
         This page will timeout in 9:34 minutes
       </div>
+      <PaymentSuccessModal
+        show={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+      />
     </div>
   );
 };
