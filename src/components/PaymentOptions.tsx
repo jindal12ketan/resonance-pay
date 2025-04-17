@@ -4,12 +4,13 @@ import { PaymentTab, DebitCardDetails } from "../types/payment";
 import DebitCardForm from "./PaymentModes/DebitCardForm";
 import NetbankingForm from "./PaymentModes/NetBankingForm";
 import WalletsForm from "./PaymentModes/WalletForm";
-import PaymentSuccessModal from "./PaymentSuccessful";
+import PaymentSuccessModal from "./Modals/PaymentSuccessful";
+import EmailReciept from "./Modals/EmailReceipt";
 
 const PaymentOptions: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState<PaymentTab>("debitCard");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-
+  const [showEmailReceipt, setShowEmailReceipt] = useState(false);
   const [debitCardDetails, setCardDetails] = useState<DebitCardDetails>({
     cardNumber: "",
     expiry: "",
@@ -24,6 +25,14 @@ const PaymentOptions: React.FC = () => {
     // alert(
     //   "Processing payment with: " + JSON.stringify(debitCardDetails, null, 2)
     // );
+    setShowSuccessModal(true);
+  };
+  const openEmailReceipt = () => {
+    setShowEmailReceipt(true);
+    setShowSuccessModal(false);
+  };
+  const closeEmailReceipt = () => {
+    setShowEmailReceipt(false);
     setShowSuccessModal(true);
   };
   const renderForm = () => {
@@ -55,13 +64,15 @@ const PaymentOptions: React.FC = () => {
         </div>
         <div className="md:col-span-2">{renderForm()}</div>
       </div>
-      <div className="bg-orange-100 text-orange-600 text-center py-2 text-xs rounded-b-lg">
+      {/* <div className="bg-orange-100 text-orange-600 text-center py-2 text-xs rounded-b-lg">
         This page will timeout in 9:34 minutes
-      </div>
+      </div> */}
       <PaymentSuccessModal
         show={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}
+        openEmailReceipt={openEmailReceipt}
       />
+      <EmailReciept show={showEmailReceipt} onClose={closeEmailReceipt} />
     </div>
   );
 };

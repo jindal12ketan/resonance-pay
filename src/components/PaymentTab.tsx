@@ -8,11 +8,11 @@ interface Props {
 
 const PaymentTabs: React.FC<Props> = ({ selectedTab, onTabChange }) => {
   return (
-    <div className="flex md:flex-col bg-[#f0f4ff] h-full">
+    <div className="flex rounded-bl-lg md:flex-col bg-[#f0f4ff] h-full">
       {[
         { id: "debitCard", label: "Debit/Card" },
         { id: "wallets", label: "Wallets" },
-        { id: "netBanking", label: "Netbanking" },
+        // { id: "netBanking", label: "Netbanking" },
       ].map((tab) => {
         const isSelectedTab = selectedTab === tab.id;
         return (

@@ -1,35 +1,40 @@
-import Dialog from "../shared/dialog";
+import Dialog from "../../shared/dialog";
 
 const PaymentSuccessModal = ({
   show = false,
   onClose = () => {},
+  openEmailReceipt = () => {},
 }: {
   show: boolean;
   onClose: () => void;
+  openEmailReceipt: () => void;
 }) => (
   <Dialog show={show} onClose={onClose}>
     <div
       className="bg-white rounded-xl w-[320px] sm:w-[320px] p-6 shadow-xl text-center"
       onClick={(e) => e.stopPropagation()}
     >
-      <img
-        src="/your-logo.png"
-        alt="logo"
-        className="w-12 h-12 mx-auto rounded-full"
-      />
+      <div className="flex flex-row items-center mb-4">
+        <img
+          src="https://storage.googleapis.com/a1aa/image/yL8TEFrvdj3jhfuSjGw22-x9m-N0Nu5kzLNK5OnBmWc.jpg"
+          alt="Company Logo"
+          className="w-12 h-12 rounded-full mr-2"
+        />
+        <div className="text-lg">BMW Hornsy</div>
+      </div>
       <div className="flex flex-col items-center justify-center mt-4">
         <div className="bg-green-600 text-white rounded-full p-3 animate-bounce">
           <svg
             className="w-6 h-6"
             fill="none"
             stroke="currentColor"
-            strokeWidth="2"
+            strokeWidth="3"
             viewBox="0 0 24 24"
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M5 13l4 4L19 7"
+              d="M5 13L10 18L20 6"
             />
           </svg>
         </div>
@@ -77,7 +82,10 @@ const PaymentSuccessModal = ({
         </button>
 
         {/* Outlined Button */}
-        <button className="border border-[#1a56db] text-[#1a56db] hover:bg-[#f0f5ff] py-2 rounded-lg text-sm font-medium transition">
+        <button
+          className="border border-[#1a56db] text-[#1a56db] hover:bg-[#f0f5ff] py-2 rounded-lg text-sm font-medium transition"
+          onClick={openEmailReceipt}
+        >
           Email Receipt
         </button>
       </div>

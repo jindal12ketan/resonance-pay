@@ -10,7 +10,7 @@ const Dialog = ({
 }) =>
   show && (
     <div
-      className="fixed z-50 top-0 left-0 flex items-center justify-center w-full h-full bg-gray-800/60"
+      className="fixed z-50 top-0 left-0 flex items-center justify-center w-full h-full bg-gray-800/70"
       onClick={onClose}
     >
       {children}
